@@ -92,7 +92,6 @@ const MainCarousel = () => {
           >
             <Typography color={shades.secondary[200]}>-- Collection</Typography>
             <Typography variant="h1">{landingPageWords[index]}</Typography>
-            {console.log('index: ', index)}
             <Typography
               fontWeight="bold"
               color={shades.secondary[800]}
