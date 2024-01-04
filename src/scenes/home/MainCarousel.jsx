@@ -95,7 +95,7 @@ const MainCarousel = () => {
             {console.log('index: ', index)}
             <Typography
               fontWeight="bold"
-              color={shades.secondary[300]}
+              color={shades.secondary[800]}
               sx={{ textDecoration: 'underline' }}
             >
               Discover More
