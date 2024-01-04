@@ -13,6 +13,16 @@ const importAll = (r) =>
     return acc
   }, {})
 
+// create a list of landing page words that go with the image
+const landingPageWords = [
+  'Read What Matters',
+  '2024 Spring Sale',
+  'Expand Your Knowledge',
+  'New Year | New Book',
+  'Read Abundantly',
+  'Manifest Imagination',
+]
+
 const heroTextureImports = importAll(require.context('../../assets', false, /\.(png|jpe?g|svg)$/))
 
 const MainCarousel = () => {
@@ -81,7 +91,8 @@ const MainCarousel = () => {
             maxWidth={isNonMobile ? undefined : '240px'}
           >
             <Typography color={shades.secondary[200]}>-- Collection</Typography>
-            <Typography variant="h1">2024 Spring Sale</Typography>
+            <Typography variant="h1">{landingPageWords[index]}</Typography>
+            {console.log('index: ', index)}
             <Typography
               fontWeight="bold"
               color={shades.secondary[300]}
