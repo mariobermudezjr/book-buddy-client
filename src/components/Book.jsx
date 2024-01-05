@@ -43,7 +43,7 @@ const Book = ({ book, width }) => {
           style={{ cursor: 'pointer' }}
         />
         <Box
-          display={isHovered ? 'blocked' : 'none'}
+          display={isHovered ? 'block' : 'none'}
           position="absolute"
           bottom="10%"
           left="0"
