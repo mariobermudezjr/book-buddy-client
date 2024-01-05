@@ -28,6 +28,7 @@ const ShoppingList = () => {
   const nonFiction = books.filter((book) => book.attributes.genre === 'non-fiction')
   const psychologyBooks = books.filter((book) => book.attributes.genre === 'psychology')
   const biographyBooks = books.filter((book) => book.attributes.genre === 'biography')
+  const scienceFictionBooks = books.filter((book) => book.attributes.genre === 'scienceFiction')
 
   return (
     <Box width="80%" margin="80px auto">
@@ -51,6 +52,7 @@ const ShoppingList = () => {
         <Tab label="NON-FICTION" value="non-fiction" />
         <Tab label="PSYCHOLOGY" value="psychology" />
         <Tab label="BIOGRAPHY" value="biography" />
+        <Tab label="SCI-FI" value="scienceFiction" />
       </Tabs>
       <Box
         margin="0 auto"
@@ -68,6 +70,10 @@ const ShoppingList = () => {
           psychologyBooks.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
         {value === 'biography' &&
           biographyBooks.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
+        {value === 'scienceFiction' &&
+          scienceFictionBooks.map((book) => (
+            <Book book={book} key={`${book.bookName}-${book.id}`} />
+          ))}
       </Box>
     </Box>
   )

@@ -90,12 +90,13 @@ const MainCarousel = () => {
             margin={isNonMobile ? undefined : '0 auto'}
             maxWidth={isNonMobile ? undefined : '240px'}
           >
-            <Typography color={shades.secondary[200]}>-- Collection</Typography>
+            <Typography color={shades.secondary[700]}>-- Collection</Typography>
             <Typography variant="h1">{landingPageWords[index]}</Typography>
             <Typography
               fontWeight="bold"
-              color={shades.secondary[800]}
-              sx={{ textDecoration: 'underline' }}
+              color={shades.secondary[700]}
+              sx={{ textDecoration: 'underline', cursor: 'pointer' }}
+              variant="h4"
             >
               Discover More
             </Typography>
