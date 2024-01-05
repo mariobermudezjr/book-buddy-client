@@ -1,6 +1,9 @@
 import { Box, Button, IconButton, Typography } from '@mui/material'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
+import StarHalfIcon from '@mui/icons-material/StarHalf'
+import StarIcon from '@mui/icons-material/Star'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Book from '../../components/Book'
@@ -44,15 +47,40 @@ const BookDetails = () => {
     getBooks()
   }, [bookId]) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Return star value based on rating
+  function StarRating(rating) {
+    // Round the rating to the nearest half
+    const roundedRating = Math.floor(rating)
+
+    // Calculate full, half, and empty stars
+    const fullStars = Math.floor(Number(roundedRating))
+    const halfStars = rating % 1 >= 0.5 ? 1 : 0
+    const emptyStars = 5 - fullStars - halfStars
+
+    return (
+      <div>
+        {[...Array(fullStars)].map((_, i) => (
+          <StarIcon key={`full-${i}`} />
+        ))}
+        {[...Array(halfStars)].map((_, i) => (
+          <StarHalfIcon key={`half-${i}`} />
+        ))}
+        {[...Array(emptyStars)].map((_, i) => (
+          <StarBorderIcon key={`empty-${i}`} />
+        ))}
+      </div>
+    )
+  }
+
   return (
     <Box width="80%" m="80px auto">
       <Box display="flex" flexWrap="wrap" columnGap="40px">
         {/* IMAGES */}
-        <Box flex="1 1 40%" mb="40px">
+        <Box flex="1 1 40%" mt="40px">
           <img
             alt={book?.bookName}
-            width="100%"
-            height="100%"
+            width="75%"
+            height="75%"
             src={`http://localhost:1337${book?.attributes?.image?.data?.attributes?.formats?.small?.url}`}
             style={{ objectFit: 'contain' }}
           />
@@ -68,7 +96,9 @@ const BookDetails = () => {
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{book?.attributes?.bookName}</Typography>
             <Typography>${book?.attributes?.price.toFixed(2)}</Typography>
-            <Typography sx={{ mt: '20px' }}>{book?.attributes?.longSummary}</Typography>
+            <Typography sx={{ mt: '20px', textAlign: 'justify' }}>
+              {book?.attributes?.longSummary}
+            </Typography>
           </Box>
 
           <Box display="flex" alignItems="center" minHeight="50px">
@@ -118,8 +148,22 @@ const BookDetails = () => {
         </Tabs>
       </Box>
       <Box display="flex" flexWrap="wrap" gap="15px">
-        {value === 'description' && <div>{book?.attributes?.longSummary}</div>}
-        {value === 'starRating' && <div>stars</div>}
+        {value === 'longSummary' && (
+          <div style={{ textAlign: 'justify' }}>{book?.attributes?.longSummary}</div>
+        )}
+        {value === 'starRating' && (
+          <div
+            style={{
+              display: 'flex',
+              flexFlow: 'column',
+              alignItems: 'start',
+              justifyContent: 'start',
+            }}
+          >
+            <Box>{book?.attributes?.starRating} stars </Box>
+            <Box display="flex">{StarRating(book?.attributes?.starRating)}</Box>
+          </div>
+        )}
       </Box>
 
       {/* RELATED ITEMS */}
@@ -134,7 +178,7 @@ const BookDetails = () => {
           columnGap="1.33%"
           justifyContent="space-between"
         >
-          {books.slice(0, 4).map((item, i) => (
+          {books.slice(0, 4).map((book, i) => (
             <Book key={`${book.bookName}-${i}`} book={book} />
           ))}
         </Box>

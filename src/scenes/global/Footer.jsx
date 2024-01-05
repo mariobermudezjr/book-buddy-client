@@ -24,7 +24,6 @@ function Footer() {
           <Typography variant="h4" fontWeight="bold" mb="30px" color={shades.secondary[500]}>
             BOOK BUDDY
           </Typography>
-          {console.log('🚀 ~ file: Footer.jsx:99 ~ Footer ~ isNonMobile:', isDesktop)}
           {isDesktop ? (
             <div
               style={{

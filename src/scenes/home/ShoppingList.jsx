@@ -40,7 +40,8 @@ const ShoppingList = () => {
         indicatorColor="primary"
         value={value}
         onChange={handleChange}
-        centeredTabIndicatorProps={{ sx: { display: isNonMobile ? 'block' : 'none' } }}
+        // Warning was being thrown. Action: Comment out. Verify if this is an issue.
+        // centeredTabIndicatorProps={{ sx: { display: isNonMobile ? 'block' : 'none' } }}
         sx={{
           m: '25px',
           '& .MuiTabs-flexContainer': {

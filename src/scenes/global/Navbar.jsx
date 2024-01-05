@@ -49,8 +49,9 @@ const Navbar = () => {
             <PersonOutline sx={{ color: 'black' }} />
           </IconButton>
           <Badge
-            badgeContnent={cart.length}
-            color="secondary"
+            // Warning was being thrown. Action: Comment out. TODO: Find way to enter badge content
+            // badgeContnent={cart.length}
+            color={shades.secondary[800]}
             invisible={cart.length === 0}
             sx={{
               '& .MuiBadge-badge': {
