@@ -28,16 +28,17 @@ const Book = ({ book, width }) => {
   } = image
 
   return (
-    <Box width={width}>
-      <Box
-        position="relative"
-        onMouseOver={() => setIsHovered(true)}
-        onMouseOut={() => setIsHovered(false)}
-      >
+    <Box
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+      width={width}
+      sx={{ padding: '2em', boxShadow: 3, borderRadius: '6px' }}
+    >
+      <Box position="relative">
         <img
           alt={book.bookName}
-          width="300px"
-          height="400px"
+          width="250px"
+          height="350px"
           src={`http://localhost:1337${url}`}
           onClick={() => navigate(`/book/${book.id}`)}
           style={{ cursor: 'pointer' }}
@@ -48,37 +49,11 @@ const Book = ({ book, width }) => {
           bottom="10%"
           left="0"
           width="100%"
-          padding="0 5%"
-        >
-          <Box display="flex" justifyContent="space-between">
-            {/* Amount */}
-            <Box
-              display="flex"
-              alignItems="center"
-              backgroundColor={shades.neutral[100]}
-              borderRadius="3px"
-            >
-              <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
-                <RemoveIcon />
-              </IconButton>
-              <Typography color={shades.primary[300]}>{count}</Typography>
-              <IconButton onClick={() => setCount(Math.max(count + 1))}>
-                <AddIcon />
-              </IconButton>
-            </Box>
-            {/* Button */}
-            <Button
-              onClick={() => {
-                dispatch(addToCart({ book: { ...book, count } }))
-              }}
-              sx={{ backgroundColor: shades.primary[300], color: 'white' }}
-            >
-              Add to Cart
-            </Button>
-          </Box>
-        </Box>
+          padding="0 10%"
+        ></Box>
       </Box>
-      {/* Few Items */}
+
+      {/* Title, Author, Price */}
       <Box mt="3px">
         <Typography variant="subtitle2" color={neutral.dark}>
           {genre.replace(/([A-Z])/g, '$1').replace(/^./, (str) => str.toUpperCase())}
@@ -86,6 +61,52 @@ const Book = ({ book, width }) => {
         <Typography fontWeight="bold">{bookName}</Typography>
         <Typography>{author}</Typography>
         <Typography fontWeight="bold">${price.toFixed(2)}</Typography>
+      </Box>
+      <Box display="flex" justifyContent="center">
+        {/* Amount */}
+        <Box
+          display="flex"
+          alignItems="center"
+          backgroundColor={shades.neutral[100]}
+          borderRadius="3px"
+          mr="2em"
+        >
+          <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
+            <RemoveIcon
+              sx={{
+                ':hover': {
+                  transform: 'scale(1.1)',
+                },
+              }}
+            />
+          </IconButton>
+          <Typography color={shades.primary[300]}>{count}</Typography>
+          <IconButton onClick={() => setCount(Math.max(count + 1))}>
+            <AddIcon
+              sx={{
+                ':hover': {
+                  transform: 'scale(1.1)',
+                },
+              }}
+            />
+          </IconButton>
+        </Box>
+        {/* Add to Cart Button */}
+        <Button
+          onClick={() => {
+            dispatch(addToCart({ book: { ...book, count } }))
+          }}
+          sx={{
+            backgroundColor: shades.primary[300],
+            color: 'white',
+            ':hover': {
+              backgroundColor: shades.primary[400],
+              transform: 'scale(1.03)',
+            },
+          }}
+        >
+          Add to Cart
+        </Button>
       </Box>
     </Box>
   )
