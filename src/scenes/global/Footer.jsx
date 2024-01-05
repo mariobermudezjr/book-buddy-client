@@ -89,11 +89,11 @@ function Footer() {
           >
             Contact Us
           </Typography>
-          <Typography mb="30px">Los Angeles, California USA</Typography>
+          <Typography mb="30px">Address: Los Angeles, California, USA</Typography>
           <Typography mb="30px" sx={{ wordWrap: 'break-word' }}>
             Email: mario.bermudez.jr@gmail.com
           </Typography>
-          <Typography mb="30px">(562) 000-0000</Typography>
+          <Typography mb="30px">Phone: (562) 000-0000</Typography>
         </Box>
       </Box>
     </Box>
