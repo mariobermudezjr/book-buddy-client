@@ -59,10 +59,12 @@ const Book = ({ book, width }) => {
           {genre.replace(/([A-Z])/g, '$1').replace(/^./, (str) => str.toUpperCase())}
         </Typography>
         <Typography fontWeight="bold">{bookName}</Typography>
-        <Typography>{author}</Typography>
+        <Typography style={{ textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
+          {author}
+        </Typography>
         <Typography fontWeight="bold">${price.toFixed(2)}</Typography>
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" marginTop="0.5em">
         {/* Amount */}
         <Box
           display="flex"
