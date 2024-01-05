@@ -26,7 +26,11 @@ function Footer() {
           </Typography>
           {console.log('🚀 ~ file: Footer.jsx:99 ~ Footer ~ isNonMobile:', isDesktop)}
           {isDesktop ? (
-            <div>
+            <div
+              style={{
+                textAlign: 'justify',
+              }}
+            >
               Book Buddy is a conceptual online bookstore, designed as a portfolio project to
               exhibit top-notch web development capabilities. This virtual emporium boasts an
               extensive collection of literary works, spanning various genres to satisfy the avid

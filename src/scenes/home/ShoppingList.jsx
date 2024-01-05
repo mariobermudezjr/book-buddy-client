@@ -25,10 +25,10 @@ const ShoppingList = () => {
     getBooks()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  const nonFiction = books.filter((book) => book.attributes.genre === 'non-fiction')
-  const psychologyBooks = books.filter((book) => book.attributes.genre === 'psychology')
-  const biographyBooks = books.filter((book) => book.attributes.genre === 'biography')
-  const scienceFictionBooks = books.filter((book) => book.attributes.genre === 'scienceFiction')
+  const nonFiction = books.filter((book) => book.attributes.genre === 'Non-Fiction')
+  const psychologyBooks = books.filter((book) => book.attributes.genre === 'Psychology')
+  const biographyBooks = books.filter((book) => book.attributes.genre === 'Biography')
+  const scienceFictionBooks = books.filter((book) => book.attributes.genre === 'Science Fiction')
 
   return (
     <Box width="80%" margin="80px auto">
@@ -49,10 +49,10 @@ const ShoppingList = () => {
         }}
       >
         <Tab label="ALL" value="all" />
-        <Tab label="NON-FICTION" value="non-fiction" />
-        <Tab label="PSYCHOLOGY" value="psychology" />
-        <Tab label="BIOGRAPHY" value="biography" />
-        <Tab label="SCI-FI" value="scienceFiction" />
+        <Tab label="NON-FICTION" value="Non-Fiction" />
+        <Tab label="PSYCHOLOGY" value="Psychology" />
+        <Tab label="BIOGRAPHY" value="Biography" />
+        <Tab label="SCI-FI" value="Science Fiction" />
       </Tabs>
       <Box
         margin="0 auto"
@@ -64,13 +64,13 @@ const ShoppingList = () => {
       >
         {value === 'all' &&
           books.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
-        {value === 'non-fiction' &&
+        {value === 'Non-Fiction' &&
           nonFiction.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
-        {value === 'psychology' &&
+        {value === 'Psychology' &&
           psychologyBooks.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
-        {value === 'biography' &&
+        {value === 'Biography' &&
           biographyBooks.map((book) => <Book book={book} key={`${book.bookName}-${book.id}`} />)}
-        {value === 'scienceFiction' &&
+        {value === 'Science Fiction' &&
           scienceFictionBooks.map((book) => (
             <Book book={book} key={`${book.bookName}-${book.id}`} />
           ))}
