@@ -16,7 +16,7 @@ const Book = ({ book, width }) => {
     palette: { neutral },
   } = useTheme()
 
-  const { genre, price, bookName, image } = book.attributes
+  const { genre, price, bookName, author, image } = book.attributes
   const {
     data: {
       attributes: {
@@ -83,7 +83,8 @@ const Book = ({ book, width }) => {
         <Typography variant="subtitle2" color={neutral.dark}>
           {genre.replace(/([A-Z])/g, '$1').replace(/^./, (str) => str.toUpperCase())}
         </Typography>
-        <Typography>{bookName}</Typography>
+        <Typography fontWeight="bold">{bookName}</Typography>
+        <Typography>{author}</Typography>
         <Typography fontWeight="bold">${price.toFixed(2)}</Typography>
       </Box>
     </Box>

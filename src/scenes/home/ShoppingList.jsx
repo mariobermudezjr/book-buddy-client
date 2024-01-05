@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Box, Typography, Tab, Tabs, useMediaQuery } from '@mui/material'
+import { Box, Typography, Tab, Tabs } from '@mui/material'
 import Book from '../../components/Book'
-import { setBook } from '../../state'
+import { setBooks } from '../../state'
 
 const ShoppingList = () => {
   const dispatch = useDispatch()
   const [value, setValue] = useState('all')
   const books = useSelector((state) => state.cart.books)
-  const isNonMobile = useMediaQuery('min-width:600px')
+  // const isNonMobile = useMediaQuery('min-width:600px')
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
@@ -18,7 +18,7 @@ const ShoppingList = () => {
     const books = await fetch('http://localhost:1337/api/books?populate=image', { method: 'GET' })
 
     const booksJson = await books.json()
-    dispatch(setBook(booksJson.data))
+    dispatch(setBooks(booksJson.data))
   }
 
   useEffect(() => {

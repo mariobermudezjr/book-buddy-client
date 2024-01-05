@@ -70,5 +70,9 @@ export const theme = createTheme({
       fontFamily: ['Cinzel', 'sans-serif'].join(','),
       fontSize: 14,
     },
+    h5: {
+      fontFamily: ['Cinzel', 'sans-serif'].join(','),
+      fontSize: 12,
+    },
   },
 })

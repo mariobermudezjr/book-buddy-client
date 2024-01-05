@@ -63,14 +63,14 @@ const CartMenu = () => {
                       alt={book?.bookName}
                       width="123px"
                       hieght="164px"
-                      src={`http://localhost:1337${book?.attributes?.image?.data?.attributes?.formats?.medium?.url}`}
+                      src={`http://localhost:1337${book?.attributes?.image?.data?.attributes?.formats?.small?.url}`}
                     />
                   </Box>
                   <Box flex="1 1 60%">
                     {/* Item Name */}
                     <FlexBox mb="5px">
-                      <Typography fontWeight="bold">{book.atributes.bookName}</Typography>
-                      <IconButton onclick={() => dispatch(removeFromCart({ id: book.id }))}>
+                      <Typography fontWeight="bold">{book.attributes.bookName}</Typography>
+                      <IconButton onClick={() => dispatch(removeFromCart({ id: book.id }))}>
                         <CloseIcon />
                       </IconButton>
                     </FlexBox>
@@ -92,7 +92,7 @@ const CartMenu = () => {
                         </IconButton>
                       </Box>
                       {/* Price */}
-                      <Typography fontWeight="bold">${book.attributes.price}</Typography>
+                      <Typography fontWeight="bold">${book.attributes.price.toFixed(2)}</Typography>
                     </FlexBox>
                   </Box>
                 </FlexBox>
@@ -104,7 +104,7 @@ const CartMenu = () => {
           <Box m="20 0">
             <FlexBox m="20px 0">
               <Typography fontWeight="bold">SUBTOTAL</Typography>
-              <Typography fontWeight="bold">totalPrice</Typography>
+              <Typography fontWeight="bold">${totalPrice.toFixed(2)}</Typography>
             </FlexBox>
             <Button
               sx={{

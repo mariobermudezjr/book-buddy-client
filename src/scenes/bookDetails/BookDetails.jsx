@@ -95,6 +95,7 @@ const BookDetails = () => {
 
           <Box m="65px 0 25px 0">
             <Typography variant="h3">{book?.attributes?.bookName}</Typography>
+            <Typography variant="h5">{book?.attributes?.author}</Typography>
             <Typography>${book?.attributes?.price.toFixed(2)}</Typography>
             <Typography sx={{ mt: '20px', textAlign: 'justify' }}>
               {book?.attributes?.longSummary}
@@ -136,6 +137,19 @@ const BookDetails = () => {
               <Typography sx={{ ml: '5px' }}>ADD TO WISHLIST</Typography>
             </Box>
             <Typography>GENRES: {book?.attributes?.genre}</Typography>
+            {book?.attributes?.starRating && (
+              <div
+                style={{
+                  display: 'flex',
+                  flexFlow: 'column',
+                  alignItems: 'start',
+                  justifyContent: 'start',
+                }}
+              >
+                <Box>{book?.attributes?.starRating} stars </Box>
+                <Box display="flex">{StarRating(book?.attributes?.starRating)}</Box>
+              </div>
+            )}
           </Box>
         </Box>
       </Box>
@@ -143,26 +157,16 @@ const BookDetails = () => {
       {/* INFORMATION */}
       <Box m="20px 0">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="SUMMARY" value="longSummary" />
-          <Tab label="STARS" value="starRating" />
+          <Tab label="SHORT SUMMARY" value="shortSummary" />
+          <Tab label="LONG SUMMARY" value="longSummary" />
         </Tabs>
       </Box>
       <Box display="flex" flexWrap="wrap" gap="15px">
+        {value === 'shortSummary' && (
+          <div style={{ textAlign: 'justify' }}>{book?.attributes?.shortSummary}</div>
+        )}
         {value === 'longSummary' && (
           <div style={{ textAlign: 'justify' }}>{book?.attributes?.longSummary}</div>
-        )}
-        {value === 'starRating' && (
-          <div
-            style={{
-              display: 'flex',
-              flexFlow: 'column',
-              alignItems: 'start',
-              justifyContent: 'start',
-            }}
-          >
-            <Box>{book?.attributes?.starRating} stars </Box>
-            <Box display="flex">{StarRating(book?.attributes?.starRating)}</Box>
-          </div>
         )}
       </Box>
 
