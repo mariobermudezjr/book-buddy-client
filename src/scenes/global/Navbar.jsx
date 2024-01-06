@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { Badge, Box, IconButton } from '@mui/material'
+import { Badge, Box, IconButton, Typography } from '@mui/material'
 import { PersonOutline, SearchOutlined } from '@mui/icons-material'
 
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined'
@@ -8,6 +8,7 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
 import { useNavigate } from 'react-router-dom'
 import { shades } from '../../theme'
 import { setIsCartOpen } from '../../state'
+import logo from '../../assets/logo/light-logo.png'
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -28,7 +29,7 @@ const Navbar = () => {
       zIndex="1"
     >
       <Box
-        width="80%"
+        width="90%"
         margin="auto"
         display="flex"
         justifyContent="space-between"
@@ -36,10 +37,27 @@ const Navbar = () => {
       >
         <Box
           onClick={() => navigate('/')}
-          sx={{ '&:hover': { cursor: 'pointer' } }}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            alignContent: 'center',
+            '&:hover': { cursor: 'pointer' },
+          }}
           color={shades.secondary[500]}
         >
-          BOOK BUDDY
+          <img
+            alt={'book-buddy-logo'}
+            width="40px"
+            height="40px"
+            src={logo}
+            onClick={() => navigate('/')}
+            style={{ cursor: 'pointer' }}
+          />
+          <Typography variant="h4" ml={2} fontWeight={'bold'}>
+            {' '}
+            BOOK BUDDY
+          </Typography>
         </Box>
         <Box display="flex" justifycontent="space-between" columnGap="20px" zIndex="2">
           <IconButton>
