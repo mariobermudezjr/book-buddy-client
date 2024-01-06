@@ -28,6 +28,10 @@ const heroTextureImports = importAll(require.context('../../assets', false, /\.(
 const MainCarousel = () => {
   const isNonMobile = useMediaQuery('(min-width:600px)')
 
+  const handleMove = () => {
+    window.scrollTo({ top: 607, behavior: 'smooth' }) // here it goes
+  }
+
   return (
     <Carousel
       infiniteLoop={true}
@@ -97,6 +101,7 @@ const MainCarousel = () => {
               color={shades.secondary[700]}
               sx={{ textDecoration: 'underline', cursor: 'pointer' }}
               variant="h4"
+              onClick={handleMove}
             >
               Discover More
             </Typography>
