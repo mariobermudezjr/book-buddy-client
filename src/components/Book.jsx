@@ -4,7 +4,7 @@ import { IconButton, Box, Typography, useTheme, Button } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import { shades } from '../theme'
-import { addToCart } from '../state'
+import { addToCart, setIsCartOpen } from '../state'
 import { useNavigate } from 'react-router-dom'
 
 const Book = ({ book, width }) => {
@@ -97,6 +97,7 @@ const Book = ({ book, width }) => {
         <Button
           onClick={() => {
             dispatch(addToCart({ book: { ...book, count } }))
+            // dispatch(setIsCartOpen({}))
           }}
           sx={{
             backgroundColor: shades.primary[300],

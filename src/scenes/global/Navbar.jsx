@@ -61,32 +61,35 @@ const Navbar = () => {
         </Box>
         <Box display="flex" justifycontent="space-between" columnGap="20px" zIndex="2">
           <IconButton>
-            <SearchOutlined sx={{ color: 'black' }} />
+            <SearchOutlined sx={{ fontSize: '1.3em', color: 'black' }} />
           </IconButton>
           <IconButton>
-            <PersonOutline sx={{ color: 'black' }} />
+            <PersonOutline sx={{ fontSize: '1.3em', color: 'black' }} />
           </IconButton>
           <Badge
             // Warning was being thrown. Action: Comment out. TODO: Find way to enter badge content
-            // badgeContnent={cart.length}
-            color={shades.secondary[800]}
+            badgeContent={cart.length}
+            color="#1A76D2"
             invisible={cart.length === 0}
             sx={{
               '& .MuiBadge-badge': {
-                right: 5,
-                top: 5,
+                right: 8,
+                top: 8,
                 padding: '0 4px',
                 height: '14px',
                 minWidth: '13px',
+                backgroundColor: '#000000',
+                color: '#FFFFFF',
+                fontSize: '1em',
               },
             }}
           >
             <IconButton onClick={() => dispatch(setIsCartOpen({}))}>
-              <ShoppingBagOutlinedIcon sx={{ color: 'black' }} />
+              <ShoppingBagOutlinedIcon sx={{ fontSize: '1.3em', color: 'black' }} />
             </IconButton>
           </Badge>
           <IconButton>
-            <MenuOutlinedIcon sx={{ color: 'black' }} />
+            <MenuOutlinedIcon sx={{ fontSize: '1.3em', color: 'black' }} />
           </IconButton>
         </Box>
       </Box>

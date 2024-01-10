@@ -15,6 +15,9 @@ export const cartSlice = createSlice({
     },
     addToCart: (state, action) => {
       state.cart = [...state.cart, action.payload.book]
+      if (!state.isCartOpen) {
+        state.isCartOpen = !state.isCartOpen
+      }
     },
 
     removeFromCart: (state, action) => {

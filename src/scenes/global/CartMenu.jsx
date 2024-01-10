@@ -1,6 +1,8 @@
+import * as React from 'react'
 import { Box, Button, Divider, IconButton, Typography } from '@mui/material'
 import { useSelector, useDispatch } from 'react-redux'
 import CloseIcon from '@mui/icons-material/Close'
+import { ClickAwayListener } from '@mui/base/ClickAwayListener'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import styled from '@emotion/styled'
@@ -35,6 +37,7 @@ const CartMenu = () => {
       left="0"
       top="0"
       overflow="auto"
+      sx={{ position: 'relative' }}
     >
       <Box // Modal
         position="fixed"
@@ -117,7 +120,9 @@ const CartMenu = () => {
               }}
               onClick={() => {
                 navigate('/checkout')
-                dispatch(setIsCartOpen({}))
+                if (isCartOpen) {
+                  dispatch(setIsCartOpen({}))
+                }
               }}
             >
               CHECKOUT
